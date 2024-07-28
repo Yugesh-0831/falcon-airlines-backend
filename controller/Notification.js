@@ -1,7 +1,6 @@
 const { User } = require("../model/User");
 const sendMail = require("./Mail");
 const sendSMS = require("./SMS");
-const { fetchUserById } = require("./user");
 
 exports.sendNotifications = async (flight, message) => {
   const userIds = flight.users;
