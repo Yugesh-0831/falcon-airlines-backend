@@ -1,5 +1,6 @@
 const { User } = require("../model/User");
 const sendMail = require("./Mail");
+const sendSMS = require("./SMS");
 const { fetchUserById } = require("./user");
 
 exports.sendNotifications = async (flight, message) => {
@@ -40,5 +41,7 @@ const sendNotification = (user, flight_id, message) => {
 const handleNotifications = (notification) => {
   if (notification.method === "Email") {
     sendMail(notification.recipient, notification.message);
+  } else {
+    sendSMS(notification.recipient, notification.message);
   }
 };

@@ -31,7 +31,9 @@ exports.updateFlight = async (req, res) => {
       message: "Flight updated",
       message: req.body.message,
     });
-    await sendNotifications(updatedFlight, req.body.message);
+    if (req.body.message) {
+      await sendNotifications(updatedFlight, req.body.message);
+    }
     res.status(200).json(updatedFlight);
   } catch (err) {
     console.log(err);

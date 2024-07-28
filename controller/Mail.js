@@ -1,3 +1,4 @@
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
@@ -7,7 +8,7 @@ const transporter = nodemailer.createTransport({
   secure: false, // Use `true` for port 465, `false` for all other ports
   auth: {
     user: "yugeshjhamb0831@gmail.com",
-    pass: "ovpz dhlf yfwl hjbv",
+    pass: process.env.APP_PASS,
   },
 });
 
@@ -23,9 +24,9 @@ async function sendMail(mailId, message) {
       text: message,
     });
 
-    console.log("Mail sent: %s", info.messageId);
+    console.log("Mail sent successfully");
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 }
 
