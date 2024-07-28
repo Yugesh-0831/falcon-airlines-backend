@@ -5,47 +5,32 @@ const flightRouter = require("./routes/Flight");
 const userRouter = require("./routes/User");
 const authRouter = require("./routes/Auth");
 const cors = require("cors");
-// const WebSocket = require("ws");
-// const server = require("http").createServer(app);
-// const wss = new WebSocket.Server({ server });
+const http = require("http");
+const { initializeSocket } = require("./utils/socket-io");
 
-// wss.on("connection", (ws) => {
-//   console.log("Client connected");
-
-//   ws.on("message", (message) => {
-//     console.log(`Received message => ${message}`);
-//   });
-
-//   ws.on("close", () => {
-//     console.log("Client disconnected");
-//   });
-// });
-
-// function broadcast(data) {
-//   wss.clients.forEach((client) => {
-//     if (client.readyState === WebSocket.OPEN) {
-//       client.send(JSON.stringify(data));
-//     }
-//   });
-// }
+const server = http.createServer(app);
 
 app.use(cors());
-app.use(express.json()); //to parse req.body
+app.use(express.json()); // to parse req.body
+
+initializeSocket(server);
+
 app.use("/flights", flightRouter.router);
 app.use("/users", userRouter.router);
 app.use("/auth", authRouter.router);
 
-main();
-
 async function main() {
   try {
     await mongoose.connect("mongodb://localhost:27017/indigo-airlines");
-    console.log("connected to database");
+    console.log("Connected to database");
   } catch (error) {
     console.log(error);
   }
 }
 
-app.listen(8080, () => {
-  console.log("server started successfully");
+main();
+
+// Use `server.listen` instead of `app.listen`
+server.listen(8080, () => {
+  console.log("Server started successfully");
 });
