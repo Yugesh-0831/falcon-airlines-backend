@@ -30,7 +30,6 @@ async function main() {
 
 main();
 
-// Use `server.listen` instead of `app.listen`
 server.listen(8080, () => {
   console.log("Server started successfully");
 });
