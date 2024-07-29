@@ -4,6 +4,9 @@ const { Schema } = mongoose;
 const flightSchema = new Schema({
   flight_id: { type: String, required: true },
   airline: { type: String, required: true },
+  price: { type: Number, required: true },
+  source: { type: String, required: true },
+  destination: { type: String, required: true },
   status: { type: String, required: true },
   departure_gate: { type: String, required: true },
   arrival_gate: { type: String, required: true },

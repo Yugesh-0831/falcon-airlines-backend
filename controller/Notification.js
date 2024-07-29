@@ -11,7 +11,6 @@ exports.sendNotifications = async (flight, message) => {
 };
 
 const sendNotification = (user, flight_id, message) => {
-  console.log(user);
   const timestamp = new Date().toISOString();
   if (user.phone) {
     const smsNotification = {
@@ -33,6 +32,7 @@ const sendNotification = (user, flight_id, message) => {
       recipient: user.email,
     };
     handleNotifications(emailNotification);
+    console.log(emailNotification);
     sendMail();
   }
 };

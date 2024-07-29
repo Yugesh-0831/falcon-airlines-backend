@@ -27,11 +27,10 @@ exports.updateFlight = async (req, res) => {
     const updatedFlight = await Flight.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    broadcastMessage("flight_updated", {
-      message: "Flight updated",
-      message: req.body.message,
-    });
     if (req.body.message) {
+      broadcastMessage("flight_updated", {
+        message: { update: req.body.message, flight: updatedFlight },
+      });
       await sendNotifications(updatedFlight, req.body.message);
     }
     res.status(200).json(updatedFlight);
