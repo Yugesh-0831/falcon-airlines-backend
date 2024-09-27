@@ -16,8 +16,8 @@ async function sendMail(mailId, message) {
   try {
     const info = await transporter.sendMail({
       from: {
-        name: "Indigo Airlines",
-        address: "yugeshjhamb0831@gmail.com",
+        name: "Falcon Airlines",
+        address: process.env.SENDER_MAIL,
       },
       to: mailId,
       subject: "Your flight update",

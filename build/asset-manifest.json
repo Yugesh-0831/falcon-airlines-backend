@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.72fdb8f1.css",
+    "main.js": "/static/js/main.58fd000a.js",
+    "static/media/falcon-airlines.png": "/static/media/falcon-airlines.c470d81107eccf8453dc.png",
+    "index.html": "/index.html",
+    "main.72fdb8f1.css.map": "/static/css/main.72fdb8f1.css.map",
+    "main.58fd000a.js.map": "/static/js/main.58fd000a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.72fdb8f1.css",
+    "static/js/main.58fd000a.js"
+  ]
+}
